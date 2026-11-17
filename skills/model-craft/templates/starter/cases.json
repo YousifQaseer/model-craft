@@ -1,0 +1,5 @@
+[
+  { "name": "party-4", "set": { "party": 4 }, "wait": 1500 },
+  { "name": "pick-t2", "set": { "pick": "t2" }, "wait": 1600 },
+  { "name": "dinner", "set": { "time": "night" }, "wait": 1500 }
+]

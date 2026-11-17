@@ -1,0 +1,10 @@
+{
+  "name": "model-craft",
+  "version": "1.2.0",
+  "private": true,
+  "type": "module",
+  "description": "Agent skill: websites whose centrepiece is an interactive 3D model of what the visitor is choosing.",
+  "license": "MIT",
+  "scripts": { "doctor": "node scripts/doctor.mjs" },
+  "dependencies": { "playwright-core": "1.64.0" }
+}

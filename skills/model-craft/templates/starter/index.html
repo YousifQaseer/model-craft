@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Corner Café · model-craft starter</title>
+<meta name="description" content="Pick your party size, tap a table on the 3D café, reserve.">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="engine/model.css">
+<link rel="stylesheet" href="site.css">
+<link rel="modulepreload" href="engine/mount.js">
+</head>
+<body>
+<header class="bar"><strong>Corner Café</strong><span class="bar__note">model-craft starter</span></header>
+<main class="layout">
+  <div id="stage" class="stage" data-sheet="side"></div>
+  <section class="controls" aria-label="Your table">
+    <h1>Book a table</h1>
+    <p class="lede">Choose your party size; the tables that fit light up. Tap one on the café, or pick it below.</p>
+    <fieldset><legend>Party size</legend>
+      <div class="chips"><button type="button" class="chip" data-party="2">2</button><button type="button" class="chip" data-party="4">4</button><button type="button" class="chip" data-party="6">6</button></div>
+    </fieldset>
+    <fieldset><legend>When</legend>
+      <div class="chips"><button type="button" class="chip" data-time="day">Lunch</button><button type="button" class="chip" data-time="night">Dinner</button></div>
+    </fieldset>
+    <fieldset><legend>Tables that fit</legend><div class="chips" id="tables"></div></fieldset>
+    <p id="summary" class="summary" aria-live="polite" data-check="summary"></p>
+    <p id="price" data-check="price"></p>
+    <p class="note">Sample pricing.</p>
+  </section>
+</main>
+<script type="module" src="app.js"></script>
+</body>
+</html>

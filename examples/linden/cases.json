@@ -1,0 +1,14 @@
+[
+  { "name": "type-queen", "set": { "type": "queen" } },
+  { "name": "guests-3", "set": { "guests": 3 } },
+  { "name": "tap-103", "set": { "pick": "r103" }, "wait": 1800 },
+  { "name": "breakfast-103", "set": { "breakfast": true }, "wait": 2400 },
+  { "name": "night", "set": { "pick": null, "theme": "night" }, "wait": 1600 },
+  { "name": "parking", "set": { "parking": true }, "wait": 2400 },
+  { "name": "suite-4", "set": { "type": "suite", "guests": 4 }, "wait": 1600 },
+  { "name": "tap-301", "set": { "pick": "r301" }, "wait": 1800 },
+  { "name": "breakfast-arrives", "play": "breakfast", "arg": "r301", "at": 900 },
+  { "name": "late-checkout", "set": { "late": true }, "wait": 1800, "page": true },
+  { "name": "day-close", "set": { "theme": "day", "pick": null }, "wait": 1600 },
+  { "name": "king-2", "set": { "type": "king", "guests": 2 }, "wait": 1600, "page": true }
+]

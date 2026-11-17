@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Salt Table · a neighbourhood bistro on James Street North</title>
+<meta name="description" content="Choose your table in our dining room, not just a time. Lunch and dinner on James Street North, Hamilton.">
+<meta name="theme-color" content="#F4EEE4">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Instrument+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="engine/model.css">
+<link rel="stylesheet" href="site.css">
+<link rel="modulepreload" href="engine/mount.js">
+</head>
+<body>
+<header class="top">
+  <a class="mark" href="#book">Salt <i>Table</i></a>
+  <nav class="top__nav" aria-label="Sections"><a href="#menu">Menu</a><a href="#room">The room</a><a href="#visit">Visit</a></nav>
+  <a class="btn btn--sm" href="#book">Reserve</a>
+</header>
+
+<main>
+  <section id="book" class="hero" aria-labelledby="hero-h">
+    <div class="hero__stage"><div id="stage" class="stage" data-sheet="side"></div></div>
+    <div class="hero__panel">
+      <p class="eyebrow">A neighbourhood bistro on James Street North</p>
+      <h1 id="hero-h">Pick your table,<br><em>not just a time.</em></h1>
+
+      <div class="ctl">
+        <span class="ctl__label" id="party-l">Party</span>
+        <div class="stepper" role="group" aria-labelledby="party-l">
+          <button type="button" id="party-minus" aria-label="One fewer guest">−</button>
+          <output id="party-out" aria-live="polite">2</output>
+          <button type="button" id="party-plus" aria-label="One more guest">+</button>
+        </div>
+        <div class="seg" role="radiogroup" aria-label="Service">
+          <button type="button" role="radio" data-service="lunch">Lunch</button>
+          <button type="button" role="radio" data-service="dinner">Dinner</button>
+        </div>
+      </div>
+
+      <fieldset class="group"><legend>Day</legend><div class="chips chips--scroll" id="days"></div></fieldset>
+      <fieldset class="group"><legend>Time</legend><div class="chips" id="times"></div></fieldset>
+      <fieldset class="group"><legend>Table</legend><p class="note" id="tables-note"></p><div class="chips" id="tables"></div></fieldset>
+      <fieldset class="group"><legend>Occasion</legend>
+        <div class="chips" role="radiogroup" aria-label="Occasion">
+          <button type="button" role="radio" class="chip" data-occasion="none">Just dinner</button>
+          <button type="button" role="radio" class="chip" data-occasion="birthday">Birthday <span>cake +$28</span></button>
+          <button type="button" role="radio" class="chip" data-occasion="anniversary">Anniversary <span>flowers +$35</span></button>
+          <button type="button" role="radio" class="chip" data-occasion="business">Business</button>
+        </div>
+      </fieldset>
+      <label class="toggle"><input type="checkbox" id="tasting"><span><b>Pre-order the tasting menu</b><small id="tasting-price"></small></span></label>
+
+      <div class="total">
+        <p data-check="summary" aria-live="polite"></p>
+        <p class="total__money" data-check="price"></p>
+        <button type="button" class="btn btn--wide" id="to-reserve">Reserve</button>
+        <p class="note" id="to-reserve-note"></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="menu" class="band" aria-labelledby="menu-h">
+    <div class="band__inner split">
+      <figure class="photo"><img src="assets/pasta.webp" alt="Pappardelle with brown butter, sage and parmesan on a terracotta plate." loading="lazy" width="900" height="1200"></figure>
+      <div>
+        <p class="eyebrow">This week</p>
+        <h2 id="menu-h">Short menu, changes with the market.</h2>
+        <ul class="menu">
+          <li><b>Whipped ricotta, honey, black pepper, grilled bread</b><span>14</span></li>
+          <li><b>Little gem, anchovy, crisp shallots</b><span>16</span></li>
+          <li><b>Pappardelle, brown butter, sage, parmesan</b><span>26</span></li>
+          <li><b>Half chicken, salsa verde, roast potatoes</b><span>32</span></li>
+          <li><b>Olive oil cake, crème fraîche</b><span>11</span></li>
+        </ul>
+        <p class="note">Tasting menu, five courses, $85 a guest. Sample menu and prices.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="room" class="band band--alt" aria-labelledby="room-h">
+    <div class="band__inner">
+      <p class="eyebrow">The room</p>
+      <h2 id="room-h">Twenty-eight seats and a long table.</h2>
+      <div class="photos">
+        <figure class="photo photo--wide"><img src="assets/room.webp" alt="The dining room before evening service: oak tables, pendant lights, olive trees." loading="lazy" width="1600" height="900"></figure>
+        <figure class="photo"><img src="assets/table.webp" alt="A round table for two, set with a candle and glasses." loading="lazy" width="900" height="1200"></figure>
+      </div>
+      <div class="facts-grid">
+        <div><h3>Window tables</h3><p>Three by the front window: two twos and a corner four. Good for watching James Street go by.</p></div>
+        <div><h3>The long table</h3><p>Seats eight. Book it for birthdays and team dinners; we'll set it the way you ask.</p></div>
+        <div><h3>Walk-ins</h3><p>We keep the bar for walk-ins every night. Four stools, first come.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reserve" class="band" aria-labelledby="res-h">
+    <div class="band__inner reserve">
+      <p class="eyebrow">Reserve</p>
+      <h2 id="res-h">Hold the table.</h2>
+      <ol class="steps" aria-label="Reservation steps"><li data-step="details">Details</li><li data-step="review">Review</li><li data-step="done">Booked</li></ol>
+      <p class="pill" id="res-summary"></p>
+
+      <form data-pane="details" class="pane" id="details-form" novalidate>
+        <p class="warn" id="need-choice" hidden>Pick a time and a table above first.</p>
+        <label class="field"><span>Name</span><input id="f-name" autocomplete="name" required><small id="err-name" class="err"></small></label>
+        <label class="field"><span>Email</span><input id="f-email" type="email" autocomplete="email" inputmode="email" required><small id="err-email" class="err"></small></label>
+        <label class="field"><span>Phone</span><input id="f-phone" type="tel" autocomplete="tel" inputmode="tel" required><small id="err-phone" class="err"></small></label>
+        <label class="field"><span>Anything we should know? <i>(optional)</i></span><textarea id="f-notes" rows="3" placeholder="Allergies, a high chair, a surprise…"></textarea></label>
+        <button type="submit" class="btn">Review</button>
+      </form>
+
+      <div data-pane="review" class="pane" hidden>
+        <div id="review"></div>
+        <div class="row"><button type="button" class="btn btn--ghost" data-step="details">Back</button><button type="button" class="btn" id="confirm">Confirm reservation</button></div>
+      </div>
+
+      <div data-pane="done" class="pane done" hidden>
+        <p class="done__ref" id="ref"></p>
+        <h3>See you soon.</h3>
+        <p id="done-summary"></p>
+        <p class="note">This is a demo site: no table was held and nothing was sent or charged. A live site would email a confirmation and text a reminder the day before.</p>
+        <button type="button" class="btn btn--ghost" data-step="details">Make another</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="visit" class="band band--alt" aria-labelledby="visit-h">
+    <div class="band__inner facts-grid">
+      <div><p class="eyebrow">Visit</p><h2 id="visit-h">James Street North, Hamilton</h2></div>
+      <div><h3>Hours</h3><p>Lunch Tue to Sat, 11:30 to 2<br>Dinner Tue to Sun, 5:30 to 10<br>Closed Mondays</p></div>
+      <div><h3>Deposits and changes</h3><p>We take $10 a guest to hold a table and take it off your bill. Change or cancel up to 24 hours before and it's refunded.</p></div>
+    </div>
+  </section>
+</main>
+<footer class="foot"><p><b>Salt Table</b> · James Street North, Hamilton · (905) 555-0198</p><p class="note">A demo site with a placeholder brand. Menu, prices and deposits are samples. The dining room is a 3D model built for this page.</p></footer>
+<script type="module" src="app.js"></script>
+</body>
+</html>

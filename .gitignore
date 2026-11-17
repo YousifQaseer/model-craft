@@ -1,0 +1,6 @@
+node_modules/
+lab/
+kie-ledger.jsonl
+*.kie.json
+.env
+.DS_Store

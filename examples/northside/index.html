@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Northside Barber Co. · Hamilton barbershop</title>
+<meta name="description" content="A neighbourhood barbershop in Hamilton, Ontario. Pick a barber and a service on the live 3D shop, then book a chair.">
+<meta name="theme-color" content="#F4F1EA">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23111'/%3E%3Crect x='13' y='5' width='6' height='22' rx='3' fill='%23F4F1EA'/%3E%3Cpath d='M13 9l6-3v4l-6 3zM13 17l6-3v4l-6 3z' fill='%23B3261E'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="engine/model.css">
+<link rel="stylesheet" href="site.css">
+<link rel="modulepreload" href="engine/mount.js">
+<link rel="preload" as="image" href="assets/poster.webp">
+</head>
+<body>
+<a class="skip" href="#book">Skip to booking</a>
+<header class="top">
+  <a class="mark" href="#top" aria-label="Northside Barber Co., top of page">NORTHSIDE <span>BARBER CO<i>.</i></span></a>
+  <nav class="top__nav" aria-label="Sections">
+    <a href="#services">Services</a><a href="#barbers">Barbers</a><a href="#visit">Visit</a>
+  </nav>
+  <a class="btn btn--sm" href="#book" data-go="book">Book</a>
+</header>
+
+<main id="top">
+  <div class="work">
+    <div id="stage" class="stage" data-sheet="side"></div>
+
+    <div class="col">
+      <section class="hero" aria-labelledby="h-hero">
+        <p class="kicker">Barbershop · Hamilton, Ontario</p>
+        <h1 id="h-hero">Pick your chair<span>.</span></h1>
+        <p class="lede">This is the shop, live. Choose a barber and a service and it sets the chair up for you. Tap a chair to meet whoever works it.</p>
+        <fieldset class="field">
+          <legend>Barber</legend>
+          <div class="chips" data-group="barber">
+            <button type="button" class="chip" data-barber="any">Any barber</button>
+            <button type="button" class="chip" data-barber="marco">Marco</button>
+            <button type="button" class="chip" data-barber="dee">Dee</button>
+            <button type="button" class="chip" data-barber="sam">Sam</button>
+          </div>
+        </fieldset>
+      </section>
+
+      <section id="services" class="block" aria-labelledby="h-services">
+        <div class="block__head">
+          <h2 id="h-services">Services</h2>
+          <p class="tag">Sample pricing · CAD + 13% HST</p>
+        </div>
+        <div class="cards" id="service-cards"></div>
+        <h3 class="sub">Add-ons</h3>
+        <div class="cards cards--two" id="addon-cards"></div>
+        <h3 class="sub">Bring a friend</h3>
+        <div class="friend">
+          <button type="button" class="toggle" data-friend aria-pressed="false"><span class="toggle__box" aria-hidden="true"></span><span><b>Book a second chair</b><small>Same time, next station over. Your friend picks their own service.</small></span></button>
+          <div class="chips chips--small" id="friend-services" aria-label="Your friend's service"></div>
+        </div>
+      </section>
+
+      <section id="barbers" class="block" aria-labelledby="h-barbers">
+        <div class="block__head"><h2 id="h-barbers">The barbers</h2></div>
+        <div class="people" id="people"></div>
+      </section>
+
+      <section id="book" class="block book" aria-labelledby="h-book">
+        <div class="block__head"><h2 id="h-book">Book a chair</h2><p class="tag">Demo booking · nothing is sent</p></div>
+        <ol class="steps" aria-label="Booking steps">
+          <li data-step-dot="1"><span>1</span>Barber &amp; service</li>
+          <li data-step-dot="2"><span>2</span>Time</li>
+          <li data-step-dot="3"><span>3</span>Details</li>
+        </ol>
+
+        <form id="booking" novalidate>
+          <div class="pane" data-pane="1">
+            <fieldset class="field"><legend>Barber</legend>
+              <div class="chips chips--small" data-group="barber">
+                <button type="button" class="chip" data-barber="any">Any</button>
+                <button type="button" class="chip" data-barber="marco">Marco</button>
+                <button type="button" class="chip" data-barber="dee">Dee</button>
+                <button type="button" class="chip" data-barber="sam">Sam</button>
+              </div>
+            </fieldset>
+            <fieldset class="field"><legend>Service</legend><div class="chips chips--small" id="step-services"></div></fieldset>
+            <fieldset class="field"><legend>Add-ons</legend><div class="chips chips--small" id="step-addons"></div></fieldset>
+            <fieldset class="field"><legend>Bring a friend</legend>
+              <div class="chips chips--small"><button type="button" class="chip" data-friend aria-pressed="false">Second chair</button></div>
+              <div class="chips chips--small" id="step-friend" aria-label="Your friend's service"></div>
+            </fieldset>
+            <p class="assigned" id="assigned"></p>
+            <div class="nav"><button type="button" class="btn" data-step="2">Next: pick a time</button></div>
+          </div>
+
+          <div class="pane" data-pane="2" hidden>
+            <fieldset class="field"><legend>Day</legend><div class="chips chips--small" id="days"></div></fieldset>
+            <fieldset class="field"><legend>Time <span class="muted" id="time-with"></span></legend><div class="chips chips--small" id="times"></div>
+              <p class="err" id="err-time" hidden>Pick a time to carry on.</p></fieldset>
+            <p class="muted small">Sample availability. Walk-ins welcome when a chair is free.</p>
+            <div class="nav"><button type="button" class="btn btn--ghost" data-step="1">Back</button><button type="button" class="btn" data-step="3">Next: your details</button></div>
+          </div>
+
+          <div class="pane" data-pane="3" hidden>
+            <div class="inputs">
+              <label class="input"><span>Name</span><input id="f-name" name="name" autocomplete="name" required><em class="err" id="err-name" hidden>Add the name to book under.</em></label>
+              <label class="input"><span>Phone</span><input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required><em class="err" id="err-phone" hidden>Add a phone number we could text.</em></label>
+              <label class="input"><span>Email <i>(optional)</i></span><input id="f-email" name="email" type="email" inputmode="email" autocomplete="email"><em class="err" id="err-email" hidden>That email doesn't look right.</em></label>
+            </div>
+            <div class="review" id="review"></div>
+            <div class="nav"><button type="button" class="btn btn--ghost" data-step="2">Back</button><button type="submit" class="btn btn--red">Confirm booking</button></div>
+          </div>
+
+          <div class="pane done" data-pane="4" hidden tabindex="-1" aria-live="polite">
+            <p class="done__ref" id="done-ref"></p>
+            <h3 class="done__title">You're in the book<span>.</span></h3>
+            <p id="done-what"></p>
+            <p class="demo"><b>This is a demo booking. Nothing was sent</b>, no chair is held and no one will contact you. To book for real, call or walk in.</p>
+            <div class="nav"><button type="button" class="btn btn--ghost" data-reset>Start over</button></div>
+          </div>
+        </form>
+      </section>
+    </div>
+  </div>
+
+  <section id="visit" class="visit" aria-labelledby="h-visit">
+    <figure class="visit__front"><img src="assets/photo-front.webp" alt="A black-painted corner storefront with a big window and a barber pole by the door." loading="lazy" width="1600" height="900"></figure>
+    <div class="visit__grid">
+      <div>
+        <h2 id="h-visit">Visit</h2>
+        <p class="lede">A corner shop on James Street North. Three chairs, one basin, a bench by the window.</p>
+        <dl class="hours">
+          <div><dt>Tue – Thu</dt><dd>10 am – 7 pm</dd></div>
+          <div><dt>Fri</dt><dd>10 am – 8 pm</dd></div>
+          <div><dt>Sat</dt><dd>9 am – 5 pm</dd></div>
+          <div><dt>Sun</dt><dd>10 am – 3 pm</dd></div>
+          <div><dt>Mon</dt><dd>Closed</dd></div>
+        </dl>
+      </div>
+      <div>
+        <h3 class="sub">Walk-ins</h3>
+        <p>Welcome whenever a chair is free. Bookings come first; if you're running more than ten minutes late we may give your chair to the bench.</p>
+        <h3 class="sub">Find us</h3>
+        <p>James St N, Hamilton, Ontario (placeholder address)<br>Street parking and the HSR stop out front.<br>(905) 555-0142</p>
+      </div>
+    </div>
+    <div class="photos">
+      <img src="assets/photo-fade.webp" alt="Clippers blending a fade at the back of a client's head." loading="lazy" width="900" height="1200">
+      <img src="assets/photo-tools.webp" alt="Clippers, a straight razor, a comb, a towel and a shaving brush on a stone counter." loading="lazy" width="900" height="1200">
+      <img src="assets/photo-towel.webp" alt="A client reclined in a barber chair with a hot towel over his face." loading="lazy" width="900" height="1200">
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <p class="mark mark--foot">NORTHSIDE <span>BARBER CO<i>.</i></span></p>
+  <p>Northside Barber Co. is a placeholder brand. Prices and times on this page are a sample, the booking is a demo, and the photos are generated.</p>
+</footer>
+
+<div class="dock" id="dock">
+  <div class="dock__text">
+    <p class="dock__sum" id="sum" data-check="summary" aria-live="polite"></p>
+    <p class="dock__price"><b id="total" data-check="price"></b> <span>incl. HST · sample pricing</span></p>
+  </div>
+  <button type="button" class="btn" id="dock-go">Book</button>
+</div>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>

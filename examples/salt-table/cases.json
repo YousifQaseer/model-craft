@@ -1,0 +1,10 @@
+[
+  { "name": "party-4", "set": { "party": 4 }, "wait": 1400, "page": true },
+  { "name": "tap-t4", "set": { "pick": "t4" }, "wait": 1700 },
+  { "name": "birthday", "set": { "occasion": "birthday" }, "wait": 1400 },
+  { "name": "dinner", "set": { "service": "dinner", "time": "19:00" }, "wait": 1500 },
+  { "name": "party-6", "set": { "party": 6, "pick": null, "occasion": "none" }, "wait": 1400 },
+  { "name": "tap-t5-anniv", "set": { "pick": "t5", "occasion": "anniversary" }, "wait": 1700 },
+  { "name": "party-8-lunch", "set": { "party": 8, "pick": "t8", "service": "lunch", "occasion": "business", "tasting": true }, "wait": 1700, "page": true },
+  { "name": "dress", "play": "dress", "arg": "t8" }
+]

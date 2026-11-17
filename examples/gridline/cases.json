@@ -1,0 +1,10 @@
+[
+  { "name": "default-suv", "set": {}, "wait": 1200, "page": true },
+  { "name": "red-coupe", "set": { "body": "coupe", "paint": "signal" }, "wait": 2000 },
+  { "name": "tap-wheels", "set": { "pick": "wheels" }, "wait": 1500 },
+  { "name": "mesh-wheels", "set": { "wheel": "mesh" }, "wait": 1500 },
+  { "name": "tap-cabin", "set": { "pick": "cabin", "pack": "sport" }, "wait": 1500 },
+  { "name": "pickup-white", "set": { "pick": null, "body": "pickup", "paint": "glacier", "pack": "touring" }, "wait": 2000 },
+  { "name": "tap-paint", "set": { "pick": "car" }, "wait": 1500 },
+  { "name": "sedan-matte", "set": { "pick": null, "body": "sedan", "paint": "slate", "wheel": "aero", "pack": "base" }, "wait": 2000, "page": true }
+]

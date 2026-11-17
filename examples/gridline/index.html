@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Gridline Motors · Build yours, then drive it</title>
+<meta name="description" content="Build your Gridline in 3D: body, paint, wheels and package, with a live price and monthly payment. Then book a test drive.">
+<meta name="theme-color" content="#15171B">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="engine/model.css">
+<link rel="stylesheet" href="site.css">
+<link rel="modulepreload" href="engine/mount.js">
+</head>
+<body>
+<header class="top">
+  <a class="mark" href="#build" aria-label="Gridline Motors, home"><span class="mark__grid" aria-hidden="true"></span>GRIDLINE<b>MOTORS</b></a>
+  <nav class="top__nav" aria-label="Sections"><a href="#build">Build</a><a href="#finance">Finance</a><a href="#showroom">Showroom</a></nav>
+  <button type="button" class="btn btn--sm" data-go="book">Test drive</button>
+</header>
+
+<main>
+  <section id="build" class="build" aria-labelledby="build-h">
+    <div class="build__stage">
+      <div id="stage" class="stage" data-sheet="side"></div>
+      <p id="hint" class="hint">Tap the paint, the roof or the wheels. Drag to turn.</p>
+    </div>
+    <div class="build__panel">
+      <p class="eyebrow">Build yours</p>
+      <h1 id="build-h">Pick it. Turn it.<br>Then drive it.</h1>
+
+      <div class="bodies" role="radiogroup" aria-label="Body style">
+        <button type="button" role="radio" class="body" data-body="sedan"><b>Arc</b><span>Sedan</span><i>from $38,900</i></button>
+        <button type="button" role="radio" class="body" data-body="suv"><b>Ridge</b><span>SUV</span><i>from $46,500</i></button>
+        <button type="button" role="radio" class="body" data-body="coupe"><b>Volt</b><span>Coupe</span><i>from $52,900</i></button>
+        <button type="button" role="radio" class="body" data-body="pickup"><b>Haul</b><span>Pickup</span><i>from $49,900</i></button>
+      </div>
+
+      <div class="price" aria-live="polite">
+        <div><span class="price__label" id="model-name">Ridge SUV</span><strong data-check="price">$0</strong><span class="price__sub">estimated total, HST in</span></div>
+        <div class="price__mo"><strong data-check="monthly">$0/mo</strong><span class="price__sub" id="price-terms"></span></div>
+      </div>
+
+      <fieldset class="group"><legend>Paint <span id="paint-name" class="muted"></span></legend>
+        <div class="swatches" role="radiogroup" aria-label="Paint">
+          <button type="button" role="radio" class="swatch" data-paint="electric" aria-label="Electric Blue, metallic, plus $795" style="--c:#1E4FD8"></button>
+          <button type="button" role="radio" class="swatch" data-paint="glacier" aria-label="Glacier White, solid, included" style="--c:#E6E9EC"></button>
+          <button type="button" role="radio" class="swatch" data-paint="graphite" aria-label="Graphite, solid, included" style="--c:#3A3F46"></button>
+          <button type="button" role="radio" class="swatch" data-paint="signal" aria-label="Signal Red, metallic, plus $795" style="--c:#B3141C"></button>
+          <button type="button" role="radio" class="swatch" data-paint="forest" aria-label="Forest, metallic, plus $795" style="--c:#22473A"></button>
+          <button type="button" role="radio" class="swatch" data-paint="slate" aria-label="Matte Slate, matte, plus $1,900" style="--c:#5E666E"></button>
+          <button type="button" role="radio" class="swatch" data-paint="pearl" aria-label="Pearl, pearl, plus $1,200" style="--c:#F1EEE6"></button>
+        </div>
+      </fieldset>
+
+      <fieldset class="group"><legend>Wheels</legend>
+        <div class="chips" role="radiogroup" aria-label="Wheels">
+          <button type="button" role="radio" class="chip" data-wheel="aero">18 in Aero<span>Included</span></button>
+          <button type="button" role="radio" class="chip" data-wheel="spoke">20 in Five-spoke<span>+$1,400</span></button>
+          <button type="button" role="radio" class="chip" data-wheel="mesh">21 in Split-spoke<span>+$2,600</span></button>
+        </div>
+      </fieldset>
+
+      <fieldset class="group"><legend>Package</legend>
+        <div class="packs" role="radiogroup" aria-label="Package">
+          <button type="button" role="radio" class="pack" data-pack="base"><b>Base</b><span>Cloth seats, body-colour roof.</span><i>Included</i></button>
+          <button type="button" role="radio" class="pack" data-pack="sport"><b>Sport</b><span>Black roof, rear spoiler, sport seats.</span><i>+$3,200</i></button>
+          <button type="button" role="radio" class="pack" data-pack="touring"><b>Touring</b><span>Roof rails, chrome belt line, heated seats.</span><i>+$4,100</i></button>
+        </div>
+      </fieldset>
+
+      <button type="button" class="btn btn--wide" data-go="book">Book a test drive of this one</button>
+      <p class="fine">Sample pricing for a demo site. Includes $1,995 freight and delivery prep and 13% HST; licensing extra.</p>
+    </div>
+  </section>
+
+  <section id="finance" class="band" aria-labelledby="fin-h">
+    <div class="band__inner finance">
+      <div>
+        <p class="eyebrow">Finance</p>
+        <h2 id="fin-h">What it costs a month.</h2>
+        <p class="lede">Move the down payment and pick a term. The payment follows the car you built above.</p>
+        <label class="range"><span>Down payment <output id="down-out"></output></span>
+          <input id="down" type="range" min="0" max="20000" step="500" value="5000"></label>
+        <div class="chips" role="group" aria-label="Term in months">
+          <button type="button" class="chip" data-term="36">36 mo</button><button type="button" class="chip" data-term="48">48 mo</button>
+          <button type="button" class="chip" data-term="60">60 mo</button><button type="button" class="chip" data-term="72">72 mo</button>
+        </div>
+        <p class="big"><strong data-check="monthly">$0/mo</strong></p>
+        <p class="fine">Sample rate of 5.99% APR, on approved credit. Not an offer of credit.</p>
+      </div>
+      <table class="breakdown"><caption class="sr">Price breakdown</caption><tbody id="breakdown"></tbody></table>
+    </div>
+  </section>
+
+  <section id="showroom" class="band band--photos" aria-labelledby="show-h">
+    <div class="band__inner">
+      <p class="eyebrow">The showroom</p>
+      <h2 id="show-h">Thirty minutes, your route, no rush.</h2>
+      <div class="photos">
+        <figure class="photo photo--wide"><img src="assets/showroom.webp" alt="The Gridline showroom at dusk, an SUV on the turntable inside." loading="lazy" width="1600" height="900"></figure>
+        <figure class="photo"><img src="assets/wheel.webp" alt="A five-spoke wheel on blue paint, close up." loading="lazy" width="900" height="1200"></figure>
+        <figure class="photo"><img src="assets/keys.webp" alt="A key being handed across a desk." loading="lazy" width="900" height="1200"></figure>
+      </div>
+      <div class="facts-grid">
+        <div><h3>On a test drive</h3><p>Bring your licence. We set the car up the way you built it where we can, and you choose the route: city, highway or both.</p></div>
+        <div><h3>Trade-in</h3><p>Bring your current car and we'll appraise it while you drive. The number is yours to take or leave.</p></div>
+        <div><h3>Visit</h3><p>Upper James Street, Hamilton, Ontario<br>Mon to Fri 10 to 7, Sat 10 to 4, closed Sunday</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="book" class="band band--book" aria-labelledby="book-h">
+    <div class="band__inner book">
+      <p class="eyebrow">Test drive</p>
+      <h2 id="book-h">Book the one you built.</h2>
+      <ol class="steps" aria-label="Booking steps">
+        <li data-step="time">Time</li><li data-step="details">Details</li><li data-step="review">Review</li><li data-step="done">Booked</li>
+      </ol>
+      <div id="build-summary"></div>
+
+      <div data-pane="time" class="pane">
+        <h3>Pick a day</h3><div class="chips" id="days"></div>
+        <h3>Pick a time</h3><div class="chips" id="times"></div>
+        <button type="button" class="btn" id="to-details">Next: your details</button>
+      </div>
+
+      <form data-pane="details" class="pane" id="details-form" novalidate hidden>
+        <label class="field"><span>Name</span><input id="f-name" autocomplete="name" required><small id="err-name" class="err"></small></label>
+        <label class="field"><span>Email</span><input id="f-email" type="email" autocomplete="email" inputmode="email" required><small id="err-email" class="err"></small></label>
+        <label class="field"><span>Phone</span><input id="f-phone" type="tel" autocomplete="tel" inputmode="tel" required><small id="err-phone" class="err"></small></label>
+        <fieldset class="field"><legend>Bringing a trade-in?</legend>
+          <label class="radio"><input type="radio" name="trade" value="no" checked> No</label>
+          <label class="radio"><input type="radio" name="trade" value="yes"> Yes</label></fieldset>
+        <div class="row"><button type="button" class="btn btn--ghost" data-step="time">Back</button><button type="submit" class="btn">Review</button></div>
+      </form>
+
+      <div data-pane="review" class="pane" hidden>
+        <div id="review"></div>
+        <div class="row"><button type="button" class="btn btn--ghost" data-step="details">Back</button><button type="button" class="btn" id="confirm">Confirm test drive</button></div>
+      </div>
+
+      <div data-pane="done" class="pane done" hidden>
+        <p class="done__ref" id="ref"></p>
+        <h3>You're booked for <span id="done-when"></span>.</h3>
+        <p>This is a demo site: no booking was made and nothing was sent. On a live site you'd get a confirmation email and a reminder the day before.</p>
+        <button type="button" class="btn btn--ghost" data-step="time">Book another</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <p><b>Gridline Motors</b> · Upper James Street, Hamilton, Ontario · (905) 555-0142</p>
+  <p class="fine">A demo site with a placeholder brand. All prices, rates and models are samples. The car is a 3D model built for this page.</p>
+</footer>
+<script type="module" src="app.js"></script>
+</body>
+</html>

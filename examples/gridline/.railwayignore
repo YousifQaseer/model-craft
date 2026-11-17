@@ -1,0 +1,7 @@
+lab/
+tests/
+node_modules/
+kie-ledger.jsonl
+*.kie.json
+SKILL-FEEDBACK.md
+cases.json

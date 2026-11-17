@@ -1,0 +1,12 @@
+[
+  { "name": "marco", "set": { "barber": "marco" } },
+  { "name": "fade", "set": { "service": "fade" } },
+  { "name": "wash-towel", "set": { "wash": true, "towel": true } },
+  { "name": "tap-marco", "set": { "pick": "s1" }, "wait": 1800 },
+  { "name": "close", "set": { "pick": null }, "wait": 1400 },
+  { "name": "any-shave", "set": { "barber": "any", "service": "shave" } },
+  { "name": "kids", "set": { "service": "kids" } },
+  { "name": "friend", "set": { "barber": "marco", "service": "fade", "friend": true, "friendService": "beard" } },
+  { "name": "review", "set": { "step": 3, "time": "first" }, "page": true },
+  { "name": "cut", "play": "cut", "arg": "s1", "at": 820 }
+]

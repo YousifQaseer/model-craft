@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Linden · a small hotel in Hamilton</title>
+<meta name="description" content="Eight rooms in a townhouse in Hamilton, Ontario. Pick a room type and guests, see the rooms that fit light up in the house, and try the demo booking.">
+<meta name="theme-color" content="#1D2740">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231D2740'/%3E%3Ctext x='16' y='22' font-size='18' text-anchor='middle' fill='%23C9A36A' font-family='Georgia'%3EL%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Figtree:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="engine/model.css">
+<link rel="stylesheet" href="site.css">
+<link rel="modulepreload" href="engine/mount.js">
+</head>
+<body>
+<a class="skip" href="#choose">Skip to the room picker</a>
+<header class="bar">
+  <a class="wordmark" href="#top" aria-label="The Linden, home">The Linden</a>
+  <nav class="bar__nav" aria-label="Sections">
+    <a href="#rooms">Rooms</a><a href="#stay-well">Your stay</a>
+  </nav>
+  <a class="btn btn--brass btn--small" href="#book">Book</a>
+</header>
+
+<main id="top">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero__grid">
+      <div id="stage" class="stage" data-sheet="side"></div>
+      <div class="panel" id="choose">
+        <p class="eyebrow">A small hotel in Hamilton, Ontario</p>
+        <h1 id="hero-title">Pick your room in the house.</h1>
+        <p class="lede">Eight rooms on three floors above the lobby. Choose a room type and the rooms that match light up. Tap one and it slides out.</p>
+
+        <fieldset class="group">
+          <legend>Room type</legend>
+          <div class="types" id="types"></div>
+          <p class="note" id="type-note" aria-live="polite"></p>
+        </fieldset>
+
+        <div class="row2">
+          <fieldset class="group">
+            <legend>Guests</legend>
+            <div class="seg" id="guests">
+              <button type="button" data-guests="1">1</button><button type="button" data-guests="2">2</button><button type="button" data-guests="3">3</button><button type="button" data-guests="4">4</button>
+            </div>
+          </fieldset>
+          <fieldset class="group">
+            <legend>See it by</legend>
+            <div class="seg" id="theme">
+              <button type="button" data-theme="day">Day</button><button type="button" data-theme="night">Night</button>
+            </div>
+          </fieldset>
+        </div>
+
+        <fieldset class="group">
+          <legend>Extras</legend>
+          <div class="extras" id="extras"></div>
+        </fieldset>
+
+        <fieldset class="group">
+          <legend>Rooms that fit</legend>
+          <div class="chips" id="room-chips"></div>
+        </fieldset>
+
+        <div class="tally" aria-live="polite">
+          <p class="tally__summary" id="summary" data-check="summary"></p>
+          <p class="tally__total"><span id="price" data-check="price"></span></p>
+          <p class="tally__fine">Sample pricing in CAD, including 13% HST. Change dates and nights in the booking.</p>
+          <a class="btn btn--brass btn--wide" href="#book" data-go-book>Book this stay</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="rooms" id="rooms" aria-labelledby="rooms-title">
+    <div class="wrap">
+      <p class="eyebrow eyebrow--ink">Three kinds of room</p>
+      <h2 id="rooms-title">Rooms</h2>
+      <figure class="photo photo--wide rooms__photo"><img src="assets/photo-room.webp" alt="A guest room: a queen bed with white linen against a sage headboard, a walnut nightstand and a brass lamp by a tall window." loading="lazy" width="1600" height="900"></figure>
+      <div class="cards" id="room-cards"></div>
+      <p class="fine">Sample pricing: placeholder rates for a demo site, per room per night before tax.</p>
+    </div>
+  </section>
+
+  <section class="stay" id="stay-well" aria-labelledby="stay-title">
+    <div class="wrap">
+      <h2 id="stay-title">Your stay</h2>
+      <div class="stay__grid">
+        <figure class="photo photo--tall"><img src="assets/photo-lobby.webp" alt="The lobby: an oak reception desk, a brass lamp and two armchairs by a tall window." loading="lazy" width="900" height="1200"></figure>
+        <div class="stay__text">
+          <h3>What's included</h3>
+          <ul class="ticks">
+            <li>Fast Wi-Fi in every room and the lobby</li>
+            <li>Coffee, tea and a small fridge in the room</li>
+            <li>Linen bathrobes, a rain shower, local soap</li>
+            <li>Someone at the desk from 7 am to 11 pm</li>
+          </ul>
+          <h3>Policies, plainly</h3>
+          <dl class="policies">
+            <div><dt>Check-in</dt><dd>From 3 pm. Earlier if the room is ready.</dd></div>
+            <div><dt>Checkout</dt><dd>11 am, or 1 pm with late checkout ($35).</dd></div>
+            <div><dt>Cancelling</dt><dd>Free up to 48 hours before arrival.</dd></div>
+            <div><dt>Parking</dt><dd>One garage bay, $20 a night, book ahead.</dd></div>
+            <div><dt>Breakfast</dt><dd>A tray to your room, $24 per guest per night.</dd></div>
+          </dl>
+          <p class="fine">Sample policies for a demo site.</p>
+        </div>
+        <figure class="photo"><img src="assets/photo-breakfast.webp" alt="A breakfast tray on a made bed: coffee, a croissant and fruit." loading="lazy" width="1200" height="900"></figure>
+        <div class="stay__text">
+          <h3>The neighbourhood</h3>
+          <p>A brick street a short walk from James Street North, with its galleries and cafés. The escarpment trails start a few minutes up the hill, and the West Harbour GO station is close enough to walk to with a small bag.</p>
+          <p class="fine">Placeholder brand and address: The Linden is a demo hotel.</p>
+        </div>
+        <figure class="photo photo--wide"><img src="assets/photo-street.webp" alt="A narrow red-brick townhouse at dusk, warm light in its windows, a young linden tree on the wet pavement in front." loading="lazy" width="1600" height="900"></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="book" id="book" aria-labelledby="book-title">
+    <div class="wrap book__grid">
+      <div class="book__main">
+        <p class="eyebrow eyebrow--ink">Demo booking</p>
+        <h2 id="book-title">Book a stay</h2>
+        <ol class="steps" id="steps"></ol>
+        <form id="flow" novalidate></form>
+      </div>
+      <aside class="book__aside" aria-label="Your stay so far">
+        <h3>Your stay</h3>
+        <div id="aside"></div>
+      </aside>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__grid">
+    <div><p class="wordmark wordmark--foot">The Linden</p><p>Placeholder address, Hamilton, Ontario</p></div>
+    <div><p>Front desk 7 am to 11 pm</p><p>hello@thelinden.example</p></div>
+    <p class="fine">A demo site. Sample pricing; nothing on this site books a real room.</p>
+  </div>
+</footer>
+<script type="module" src="app.js"></script>
+</body>
+</html>

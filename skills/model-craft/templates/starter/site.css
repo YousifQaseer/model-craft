@@ -1,0 +1,24 @@
+:root {
+  --paper: #F3EFE8; --ink: #23201C; --soft: #6E675E; --line: rgb(35 32 28 / 0.14); --accent: #C2552D; --accent-ink: #fff;
+  --font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.5 var(--font); }
+.bar { position: sticky; top: 0; z-index: 5; display: flex; gap: 12px; align-items: baseline; padding: 14px 16px; background: var(--paper); border-bottom: 1px solid var(--line); }
+.bar__note { color: var(--soft); font-size: 13px; }
+.layout { display: grid; gap: 16px; padding: 0 16px 48px; }
+.stage { --mk-accent: var(--accent); --mk-accent-ink: var(--accent-ink); --mk-ink: var(--ink); --mk-paper: #fff; --mk-font: var(--font);
+  height: 56svh; min-height: 320px; border-radius: 18px; background: var(--paper); }
+/* Phones: the model stays pinned under the bar while the controls scroll, so every tap is seen. */
+@media (max-width: 899px) { .stage { position: sticky; top: 53px; z-index: 3; box-shadow: 0 0 0 16px var(--paper), 0 20px 22px 4px var(--paper); } }
+@media (min-width: 900px) { .layout { grid-template-columns: minmax(0, 1fr) 380px; align-items: start; padding-top: 16px; }
+  .stage { height: calc(100svh - 90px); position: sticky; top: 70px; } }
+h1 { font-size: 1.6rem; margin: 8px 0 4px; }
+.lede { color: var(--soft); margin: 0 0 12px; }
+fieldset { border: 0; padding: 0; margin: 0 0 16px; }
+legend { font-weight: 600; margin-bottom: 8px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip, .btn { min-height: 44px; padding: 0 16px; border-radius: 999px; border: 1px solid var(--line); background: #fff; color: var(--ink); font: inherit; cursor: pointer; }
+.chip[aria-pressed="true"], .btn { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.chip:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.summary { font-weight: 600; }

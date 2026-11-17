@@ -1,0 +1,65 @@
+/* model-craft: the stage, the poster, the labels on the model, and the sheet.
+   Theme it from the site with these custom properties (defaults below):
+   --mk-ink, --mk-paper, --mk-line, --mk-accent, --mk-accent-ink, --mk-radius, --mk-font, --mk-shadow */
+
+.mk-stage {
+  --mk-ink: #1d1d1f; --mk-paper: #ffffff; --mk-line: rgb(0 0 0 / 0.12);
+  --mk-accent: #2f6fed; --mk-accent-ink: #ffffff; --mk-radius: 14px; --mk-font: inherit;
+  --mk-shadow: 0 10px 30px rgb(0 0 0 / 0.16);
+  position: relative; overflow: hidden; isolation: isolate; contain: layout paint;
+}
+.mk-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; outline: none; }
+.mk-poster {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: opacity 450ms ease; pointer-events: none; user-select: none;
+}
+.mk-live .mk-poster { opacity: 0; }
+.mk-lost .mk-poster { opacity: 1; }
+.mk-lost .mk-canvas, .mk-lost .mk-labels { visibility: hidden; }
+
+/* Labels are real buttons: tap targets and keyboard stops on the model. */
+.mk-labels { position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 1; }
+.mk-label {
+  position: absolute; left: 0; top: 0; display: grid; justify-items: center; gap: 1px;
+  padding: 4px 9px 5px; min-height: 26px; white-space: nowrap; cursor: pointer;
+  font: 600 11px/1.15 var(--mk-font); letter-spacing: 0.02em; color: var(--mk-ink);
+  background: color-mix(in oklab, var(--mk-paper) 90%, transparent);
+  border: 1px solid var(--mk-line); border-radius: 999px; box-shadow: 0 2px 8px rgb(0 0 0 / 0.08);
+  opacity: 0; pointer-events: none; transition: opacity 220ms ease, background-color 200ms, color 200ms;
+  will-change: transform; -webkit-tap-highlight-color: transparent; touch-action: manipulation;
+}
+.mk-label::after { content: ""; position: absolute; inset: -9px -4px; } /* 44px hit area */
+.mk-label.is-on, .mk-label:focus-visible { opacity: 1; }
+.mk-label b { font-weight: 650; }
+.mk-label span { font-weight: 450; font-size: 10px; opacity: 0.72; }
+.mk-label span:empty { display: none; }
+.mk-label.is-selected, .mk-label[aria-pressed="true"] { background: var(--mk-accent); color: var(--mk-accent-ink); border-color: transparent; }
+.mk-label:focus-visible { outline: 2px solid var(--mk-accent); outline-offset: 3px; }
+.mk-label:disabled { opacity: 0 !important; }
+
+/* The sheet: slides up inside the stage with the tapped item's options. */
+.mk-sheet {
+  position: absolute; left: 10px; right: 10px; bottom: 10px; z-index: 2; max-height: calc(100% - 20px); overflow: auto;
+  padding: 14px 16px 16px; color: var(--mk-ink); background: var(--mk-paper); border: 1px solid var(--mk-line);
+  border-radius: var(--mk-radius); box-shadow: var(--mk-shadow); font-family: var(--mk-font);
+  transform: translateY(calc(100% + 16px)); transition: transform 380ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.mk-sheet.is-open { transform: none; }
+.mk-sheet:not(.is-open) { box-shadow: none; } /* or its shadow smudges the stage edge */
+@media (max-width: 899px) { .mk-sheet { max-height: 46%; overscroll-behavior: contain; } }
+.mk-sheet__head { display: flex; align-items: flex-start; gap: 10px; }
+.mk-sheet__title { margin: 0; font-size: 1.05rem; line-height: 1.2; }
+.mk-sheet__meta { margin: 2px 0 0; font-size: 0.82rem; opacity: 0.7; }
+.mk-sheet__close {
+  margin-left: auto; flex: none; width: 44px; height: 44px; margin: -8px -8px 0 auto; border-radius: 50%;
+  border: 0; background: transparent; color: inherit; font-size: 1.4rem; line-height: 1; cursor: pointer;
+}
+.mk-sheet__close:focus-visible { outline: 2px solid var(--mk-accent); outline-offset: -4px; }
+.mk-sheet__body { margin-top: 8px; }
+@media (min-width: 900px) {
+  .mk-stage[data-sheet="side"] .mk-sheet { left: auto; top: 12px; bottom: auto; right: 12px; width: 340px; transform: translateX(calc(100% + 16px)); }
+  .mk-stage[data-sheet="side"] .mk-sheet.is-open { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mk-poster, .mk-label, .mk-sheet { transition: none; }
+}
